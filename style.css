@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr repeat(3, 300px) 1fr;
+  padding: 1rem;
+  place-items: center;
+  width: 100%;
+}
+
+.column1 {
+  transform-origin: center right;
+  grid-column: 2 / 3;
+}
+
+.column2 {
+  grid-column: 3 / 4;
+}
+
+.column3 {
+  transform-origin: center left;
+  grid-column: 4 / 5;
+}
+
+.near {
+  animation-direction: alternate;
+  animation-duration: 1000ms;
+  animation-name: nearAnimation;
+  animation-timeline: moveTimeline;
+  border-radius: 48px;
+  height: 240px;
+  width: 240px;
+  z-index: 1;
+}
+
+.middle {
+  animation-direction: alternate;
+  animation-duration: 1000ms;
+  animation-name: middleAnimation;
+  animation-timeline: moveTimeline;
+  border-radius: 32px;
+  height: 160px;
+  width: 160px;
+  z-index: 0;
+}
+
+.far {
+  animation-direction: alternate;
+  animation-duration: 1000ms;
+  animation-name: farAnimation;
+  animation-timeline: moveTimeline;
+  border-radius: 16px;
+  height: 80px;
+  width: 80px;
+  z-index: -1;
+}
+
+.green {
+  background-color: #55c500;
+}
+
+.blue {
+  background-color: #4097db;
+}
+
+.black {
+  background-color: #1e2121;
+}
+
+@scroll-timeline moveTimeline {
+  orientation: vertical;
+  source: auto;
+}
+
+@keyframes nearAnimation {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes middleAnimation {
+  0% {
+    transform: translateY(60%);
+  }
+  100% {
+    transform: translateY(-60%);
+  }
+}
+
+@keyframes farAnimation {
+  0% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(-2%);
+  }
+}
